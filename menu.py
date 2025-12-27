@@ -6,7 +6,7 @@ class AppMenu:
     def __init__(self, root, change_mode_callback):
         self.menu = tk.Menu(root)
         root.config(menu=self.menu)
-        help_menu = tk.Menu(self.menu, tearoff=0)
+        help_menu = tk.Menu(self.menu)
         self.menu.add_cascade(label="Справка", menu=help_menu)
 
         help_menu.add_command(
@@ -18,7 +18,7 @@ class AppMenu:
             command=self.show_creator
         )
 
-        mode_menu = tk.Menu(self.menu, tearoff=0)
+        mode_menu = tk.Menu(self.menu)
         self.menu.add_cascade(label="Режим", menu=mode_menu)
 
         for key, value in MODES.items():
@@ -26,7 +26,7 @@ class AppMenu:
                 label=value,
                 command=lambda k=key: change_mode_callback(k)
             )
-        self.menu
+
         self.menu.add_command(label="Выход", command=root.quit)
 
     def show_about(self):
